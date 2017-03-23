@@ -10,7 +10,7 @@ import AVFoundation
 import UIKit
 
 // TODO: you'll need to edit this line to make your class conform to the AVCapturePhotoCaptureDelegate protocol
-class ImagePickerViewController: UIViewController {
+class ImagePickerViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     @IBOutlet weak var imageViewOverlay: UIImageView!
     @IBOutlet weak var flipCameraButton: UIButton!
@@ -64,9 +64,21 @@ class ImagePickerViewController: UIViewController {
         // TODO: Replace the following code as per instructions in the spec.
         // Instead of sending a squirrel pic every time, here we will want
         // to start the process of creating a photo from our photoOutput
-        if let squirrelImage = UIImage(named: "squirrel") {
-            selectedImage = squirrelImage
-            toggleUI(isInPreviewMode: true)
+        photoOutput.capturePhoto(with: AVCapturePhotoSettings.init(), delegate: self)
+    }
+    
+    /// Provides the delegate a captured image in a processed format (such as JPEG).
+    func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+        if let photoSampleBuffer = photoSampleBuffer {
+            // First, get the photo data using the parameters above
+            if let photoData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer) {
+                
+                // Then use this data to create a UIImage, and set it equal to `selectedImage`
+                selectedImage = UIImage(data: photoData)!
+            }
+            
+                    // This method updates the UI so the send button appears (no need to edit it)
+                    toggleUI(isInPreviewMode: true)
         }
     }
     
