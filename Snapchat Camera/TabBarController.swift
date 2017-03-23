@@ -14,7 +14,11 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         self.tabBar.barTintColor = UIColor.yellow
         self.tabBar.tintColor = UIColor.white
-        self.tabBar.unselectedItemTintColor = UIColor.gray
+        if #available(iOS 10.0, *) {
+            self.tabBar.unselectedItemTintColor = UIColor.gray
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -179,8 +179,8 @@
                                     <action selector="sendImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vVk-W9-Ezm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbV-W7-o6R">
-                                <rect key="frame" x="88" y="20" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbV-W7-o6R">
+                                <rect key="frame" x="16" y="8" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BlF-wP-RCy"/>
                                     <constraint firstAttribute="width" secondItem="zbV-W7-o6R" secondAttribute="height" multiplier="1:1" id="UgC-Z6-sid"/>
